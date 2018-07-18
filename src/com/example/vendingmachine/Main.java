@@ -40,40 +40,28 @@ public class Main {
         br.close();
 
         // お釣り計算
-
-        int change500 = 0;
-        int change100 = 0;
-        int change50 = 0;
-        int change10 = 0;
-
         int changeTotal = totalInputMoney - 120;
-        System.out.println("change total: " + changeTotal);
-
         int changeRemain = changeTotal;
 
-        // 500円の枚数
-        change500 = changeRemain / 500;
-        changeRemain -= change500 * 500;
+        System.out.println("change total: " + changeTotal);
 
-        // 100円の枚数
-        change100 = changeRemain / 100;
-        changeRemain -= change100 * 100;
+        int[] changeAmmounts = new int[4];
 
-        // 50円の枚数
-        change50 = changeRemain / 50;
-        changeRemain -= change50 * 50;
+        // 各貨幣の枚数を入力
+        for (int i = 0; i < coinValues.length; i++) {
+        	// 対象の貨幣
+        	int currentValue = coinValues[i];
+        	
+            // 貨幣の枚数計算
+            int ammount = changeRemain / currentValue;
+            changeRemain -= ammount * currentValue;
 
-        // 10円の枚数
-        change10 = changeRemain / 10;
-        changeRemain -= change10 * 10;
+            // 枚数を記録
+            changeAmmounts[i] = ammount;
 
-        // お釣り表示
-        System.out.println("change 500: " + change500);
-        System.out.println("change 100: " + change100);
-        System.out.println("change 50: " + change50);
-        System.out.println("change 10: " + change10);
+            System.out.println("change " + currentValue + ": " + ammount);
+        }
 
         System.out.println("change remain: " + changeRemain);
 	}
-
 }
