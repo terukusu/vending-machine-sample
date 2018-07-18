@@ -6,60 +6,38 @@ import java.io.InputStreamReader;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-        int num500 = 0;
-        int num100 = 0;
-        int num50 = 0;
-        int num10 = 0;
-        int totalInputMoney = 0;
+		int[] coinValues = {500, 100, 50, 10};
+		int[] coinAmmounts = new int[4];
+
+		int totalInputMoney = 0;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        // 500円の枚数
-        System.out.print("500?: ");
-        num500 = Integer.parseInt(br.readLine());
+        // 各貨幣の枚数を入力
+        for (int i = 0; i < coinValues.length; i++) {
+        	// 対象の貨幣
+        	int currentValue = coinValues[i];
+        	
+        	System.out.print(currentValue + "?: ");
+            int ammount = Integer.parseInt(br.readLine());
 
-        // 500円の枚数チェック
-        if (num500 < 0) {
-            System.out.println("minus");
-            return;
+            // 枚数チェック
+            if (ammount < 0) {
+                System.out.println("minus");
+                return;
+            }
+ 
+            // 枚数を記録
+            coinAmmounts[i] = ammount;
+
+            // トータル入力金額に加算
+            totalInputMoney += currentValue * ammount;
         }
 
-        // 100円の枚数
-        System.out.print("100?: ");
-        num100 = Integer.parseInt(br.readLine());
-
-        // 100円の枚数チェック
-        if (num100 < 0) {
-            System.out.println("minus");
-            return;
-        }
-
-        // 50円の枚数
-        System.out.print("50?: ");
-        num50 = Integer.parseInt(br.readLine());
-
-        // 50円の枚数チェック
-        if (num50 < 0) {
-            System.out.println("minus");
-            return;
-        }
-
-        // 10円の枚数
-        System.out.print("10?: ");
-        num10 = Integer.parseInt(br.readLine());
-
-        // 10円の枚数チェック
-        if (num10 < 0) {
-            System.out.println("minus");
-            return;
-        }
+        System.out.println("total input money: " + totalInputMoney);
 
         // 入力ストリーム開放
         br.close();
-
-        // 合計金額計算
-        totalInputMoney = 500 * num500 + 100 * num100 + 50 * num50 + 10 * num10;
-        System.out.println("total input money: " + totalInputMoney);
 
         // お釣り計算
 
