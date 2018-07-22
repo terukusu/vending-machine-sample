@@ -3,3 +3,6 @@
 
 ## クラス図
 ![GitHub Logo](./docs/images/vending_machine_class.png)
+
+## シーケンス図
+![GitHub Logo](./docs/images/vending_machine_sequence.png)
